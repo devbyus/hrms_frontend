@@ -1,0 +1,77 @@
+
+.note-section {
+  background: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.note-section span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.text-purple {
+  color: #6f42c1;
+}
+
+.table {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.table img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.table-responsive {
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive layout */
+@media (max-width: 992px) {
+  .note-section {
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.75rem;
+    padding: 0.4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .note-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-body h4 {
+    font-size: 1rem;
+  }
+
+  .card-body h6 {
+    font-size: 0.85rem;
+  }
+}

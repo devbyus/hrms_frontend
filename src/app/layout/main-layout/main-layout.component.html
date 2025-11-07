@@ -1,0 +1,12 @@
+<app-header (toggle)="onToggleSidebar()"></app-header>
+
+<div class="main-content">
+  <app-sidebar [isClosed]="sidebarClosed"></app-sidebar>
+  <main [class.SidebarClose]="sidebarClosed">
+    <div class="home-section">
+      <!-- <app-breadcrumb></app-breadcrumb> -->
+      <router-outlet></router-outlet>
+    </div>
+    <div id="overlay" class="overlay" [class.SidebarClose]="sidebarClosed"></div>
+  </main>
+</div>

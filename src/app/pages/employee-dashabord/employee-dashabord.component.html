@@ -1,0 +1,354 @@
+<div class="page-wrapper">
+  <div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="page-header mb-4">
+      <div class="row align-items-center">
+        <div class="col">
+          <h4 class="page-title mb-0">Employee Dashboard</h4>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-item active">Employee Dashboard</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <!-- Employee Profile -->
+      <div class="col-xl-4 d-flex">
+        <div class="card flex-fill shadow-sm position-relative">
+          <div class="card-header bg-dark text-white d-flex justify-content-between align-items-start">
+            <div class="d-flex align-items-center">
+              <span class="avatar avatar-lg avatar-rounded border border-white border-2 me-3">
+                <img src="assets/img/users/user-01.jpg" alt="Stephan Peralt" class="img-fluid rounded-circle" width="60"
+                  height="60" />
+              </span>
+              <div>
+                <h5 class="mb-1 text-white">Stephan Peralt</h5>
+                <div class="d-flex align-items-center flex-wrap">
+                  <p class="mb-0 small text-white-50">Senior Product Designer</p>
+                  <span class="mx-1"><i class="bi bi-dot text-primary"></i></span>
+                  <p class="mb-0 small text-white-50">UI/UX Design</p>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-light btn-sm rounded-circle" title="Edit Profile">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </div>
+
+          <div class="card-body">
+            <div class="mb-3">
+              <small class="text-muted d-block">Phone Number</small>
+              <p class="mb-0 fw-semibold">+1 324 3453 545</p>
+            </div>
+            <div class="mb-3">
+              <small class="text-muted d-block">Email Address</small>
+              <p class="mb-0 fw-semibold">Steperde124&#64;example.com</p>
+            </div>
+            <div class="mb-3">
+              <small class="text-muted d-block">Report Office</small>
+              <p class="mb-0 fw-semibold">Doglas Martini</p>
+            </div>
+            <div>
+              <small class="text-muted d-block">Joined On</small>
+              <p class="mb-0 fw-semibold">15 Jan 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attendance / Leave Stats -->
+      <div class="col-xl-5 d-flex">
+        <div class="card flex-fill shadow-sm">
+          <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+            <h5 class="mb-0">Attendance Overview</h5>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="bi bi-calendar me-1"></i> 2024
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">2024</a></li>
+                <li><a class="dropdown-item" href="#">2023</a></li>
+                <li><a class="dropdown-item" href="#">2022</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-unstyled mb-3">
+                  <li class="mb-2 d-flex align-items-center">
+                    <i class="bi bi-circle-fill text-dark me-2 small"></i>
+                    <span class="fw-semibold me-1">1254</span> on time
+                  </li>
+                  <li class="mb-2 d-flex align-items-center">
+                    <i class="bi bi-circle-fill text-success me-2 small"></i>
+                    <span class="fw-semibold me-1">32</span> Late Attendance
+                  </li>
+                  <li class="mb-2 d-flex align-items-center">
+                    <i class="bi bi-circle-fill text-primary me-2 small"></i>
+                    <span class="fw-semibold me-1">658</span> Work From Home
+                  </li>
+                  <li class="mb-2 d-flex align-items-center">
+                    <i class="bi bi-circle-fill text-danger me-2 small"></i>
+                    <span class="fw-semibold me-1">14</span> Absent
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <i class="bi bi-circle-fill text-warning me-2 small"></i>
+                    <span class="fw-semibold me-1">68</span> Sick Leave
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <!-- Placeholder for a small donut or progress chart -->
+                <div class="text-center text-muted small">[ Attendance Chart ]</div>
+              </div>
+
+              <div class="col-12 mt-2">
+                <div class="form-check">
+                  <input class="form-check-input" id="compare-check" type="checkbox" />
+                  <label class="form-check-label small" for="compare-check">
+                    Better than <span class="fw-semibold text-dark">85%</span> of employees
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leave Summary -->
+      <div class="col-xl-3 d-flex">
+        <div class="card flex-fill shadow-sm">
+          <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
+            <h5 class="mb-0">Leave Summary</h5>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="bi bi-calendar me-1"></i> 2024
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">2024</a></li>
+                <li><a class="dropdown-item" href="#">2023</a></li>
+                <li><a class="dropdown-item" href="#">2022</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="row text-center">
+              <div class="col-6 mb-3">
+                <small class="text-muted d-block">Total Leaves</small>
+                <h4 class="fw-bold mb-0">16</h4>
+              </div>
+              <div class="col-6 mb-3">
+                <small class="text-muted d-block">Taken</small>
+                <h4 class="fw-bold mb-0">10</h4>
+              </div>
+              <div class="col-6 mb-3">
+                <small class="text-muted d-block">Absent</small>
+                <h4 class="fw-bold mb-0">2</h4>
+              </div>
+              <div class="col-6 mb-3">
+                <small class="text-muted d-block">Request</small>
+                <h4 class="fw-bold mb-0">0</h4>
+              </div>
+              <div class="col-6 mb-3">
+                <small class="text-muted d-block">Worked Days</small>
+                <h4 class="fw-bold mb-0">240</h4>
+              </div>
+              <div class="col-6 mb-4">
+                <small class="text-muted d-block">Loss of Pay</small>
+                <h4 class="fw-bold mb-0">2</h4>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-dark w-100">
+                  Apply New Leave
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 attendance__card mb-3 align-items-stretch">
+  <!-- Attendance Card -->
+  <div class="col-xl-4 d-flex">
+    <div class="card flex-grow-1 border shadow-sm attendance-card d-flex flex-column">
+      <div class="card-body text-center d-flex flex-column justify-content-between flex-grow-1">
+        <div>
+          <h6 class="fw-semibold text-muted mb-2">Attendance</h6>
+          <h4 class="fw-bold mb-4">08:35 AM, 11 Mar 2025</h4>
+
+          <!-- Circular Progress -->
+          <div class="attendance-progress mb-4">
+            <div class="circle">
+              <div class="mask full" style="transform: rotate(234deg);"></div>
+              <div class="mask half"></div>
+              <div class="inside-circle">
+                <p class="mb-1 text-muted small">Total Hours</p>
+                <h5 class="fw-bold mb-0">5:45:32</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="badge bg-dark mb-3 p-2">Production: 3.45 hrs</div>
+          <h6 class="fw-medium d-flex align-items-center justify-content-center mb-4">
+            <i class="bi bi-fingerprint text-orange me-2"></i> Punch In at 10.00 AM
+          </h6>
+        </div>
+
+        <button class="btn btn-orange w-100 rounded-4 shadow-sm mt-auto">
+          Punch Out
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats and Summary -->
+  <div class="col-xl-8 d-flex flex-column">
+    <div class="row g-3 flex-grow-1">
+      <!-- Stat Cards -->
+      <div class="col-md-6 col-xl-3 d-flex" *ngFor="let stat of stats">
+        <div class="card shadow-sm border-0 stat-card flex-grow-1 d-flex flex-column mb-0">
+          <div class="card-body d-flex flex-column justify-content-between flex-grow-1">
+            <div>
+              <div class="mb-3 pb-2 border-bottom">
+                <span class="avatar-sm d-inline-flex align-items-center justify-content-center"
+                      [ngClass]="stat.bg">
+                  <i [class]="'bi ' + stat.icon"></i>
+                </span>
+                <h2 class="mb-0">
+                  {{stat.current}} /
+                  <span class="fs-6 text-muted">{{stat.total}}</span>
+                </h2>
+              </div>
+              <p class="fw-medium mb-2">{{stat.title}}</p>
+            </div>
+            <small class="text-muted d-flex align-items-center mt-auto">
+              <span class="avatar avatar-xs rounded-circle d-inline-flex align-items-center justify-content-center me-2"
+                    [ngClass]="stat.trendBg">
+                <i [class]="'bi ' + stat.trendIcon"></i>
+              </span>
+              {{stat.trend}}
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Working Hours -->
+      <div class="col-md-12 d-flex">
+        <div class="card shadow-sm border-0 flex-grow-1 d-flex flex-column">
+          <div class="card-body flex-grow-1 d-flex flex-column justify-content-between">
+            <div>
+              <div class="row text-center mb-4">
+                <div class="col-md-3" *ngFor="let item of workSummary">
+                  <p class="mb-1 fw-medium">
+                    <i [class]="item.icon + ' me-1'"></i>{{item.label}}
+                  </p>
+                  <h4 class="fw-bold">{{item.value}}</h4>
+                </div>
+              </div>
+
+              <!-- Progress timeline -->
+              <div class="progress-timeline mb-3 d-flex">
+                <div class="progress-segment bg-white" style="width: 18%"></div>
+                <div class="progress-segment bg-success" style="width: 18%"></div>
+                <div class="progress-segment bg-warning" style="width: 5%"></div>
+                <div class="progress-segment bg-success" style="width: 28%"></div>
+                <div class="progress-segment bg-warning" style="width: 17%"></div>
+                <div class="progress-segment bg-success" style="width: 22%"></div>
+                <div class="progress-segment bg-info" style="width: 5%"></div>
+                <div class="progress-segment bg-info" style="width: 3%"></div>
+                <div class="progress-segment bg-white" style="width: 18%"></div>
+              </div>
+            </div>
+
+            <!-- Time scale -->
+            <div class="time-scale d-flex justify-content-between text-muted small flex-wrap">
+              <span *ngFor="let t of timeScale">{{t}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <!-- Recent Payslip Summary -->
+    <div class="card shadow-sm border-0 rounded-3 mb-4">
+      <div class="card-header bg-light fw-semibold">
+        Recent Payslip
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Month</th>
+              <th>Pay Date</th>
+              <th>Net Salary</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>October 2025</td>
+              <td>30 Oct 2025</td>
+              <td>₹45,000</td>
+              <td><span class="badge bg-success">Paid</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Leave Summary -->
+    <div class="card shadow-sm border-0 rounded-3 mb-4">
+      <div class="card-header bg-light fw-semibold">
+        Leave Summary
+      </div>
+      <div class="card-body">
+        <div class="row text-center">
+          <div class="col-md-4 col-6">
+            <h6 class="text-muted">Casual Leave</h6>
+            <h5 class="fw-bold">2 / 5</h5>
+          </div>
+          <div class="col-md-4 col-6">
+            <h6 class="text-muted">Sick Leave</h6>
+            <h5 class="fw-bold">1 / 5</h5>
+          </div>
+          <div class="col-md-4 col-12 mt-3 mt-md-0">
+            <h6 class="text-muted">Earned Leave</h6>
+            <h5 class="fw-bold">0 / 10</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Announcements -->
+    <div class="card shadow-sm border-0 rounded-3 mb-4">
+      <div class="card-header bg-light fw-semibold">
+        Latest Announcements
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mb-0">
+          <li class="mb-3">
+            <i class="bi bi-megaphone text-primary me-2"></i>
+            <strong>Diwali Holiday:</strong> Office closed on 12th Nov 2025.
+          </li>
+          <li>
+            <i class="bi bi-megaphone text-primary me-2"></i>
+            <strong>Performance Review:</strong> Scheduled from 15th Nov.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

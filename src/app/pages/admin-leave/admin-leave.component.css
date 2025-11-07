@@ -1,0 +1,35 @@
+:root {
+  --clr-theme-primary: #6C5FFC;
+  --clr-text-body: #878a99;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.inRange {
+  background-color: #6f42c1 !important;
+  color: white !important;
+}
+.card__icon span {
+    color: var(--clr-theme-primary);
+    background: rgba(108, 95, 252, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+.card-title{
+    color: var(--clr-text-body);
+    font-weight: 600;
+}
+
+.bd-badge.bg-warning {
+    background-color: var(--clr-action-warning) !important;
+}
+.bd-badge.bg-success {
+    background-color: var(--clr-action-success) !important;
+}

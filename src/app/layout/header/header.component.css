@@ -1,0 +1,59 @@
+
+.app-header-fixed {
+  padding-top: 55px;
+}
+.app-header-fixed .app-header {
+  position: fixed;
+}
+
+.app-header {
+  background: #ffffff;
+  padding: 10px 10px;
+}
+
+.app-header-logo {
+  width: 242px;
+  transition: width .2s;
+}
+
+.app-header .navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.app-header .bx-menu,
+.app-header .text {
+  color: #607D8B;
+  font-size: 35px;
+}
+
+.app-header .navbar-user img {
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
+  margin-right: 10px;
+}
+
+.app-header .navbar-nav .navbar-item .navbar-link {
+  display: block;
+  text-decoration: none;
+  line-height: 20px;
+  border: none;
+  color: #20252a;
+}
+
+.app-header .bx-menu {
+  margin: 0 15px;
+  cursor: pointer;
+}
+
+
+@media (max-width: 1024px){
+  
+}

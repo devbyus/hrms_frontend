@@ -1,0 +1,38 @@
+.payroll-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.month-card {
+  width: 90px;
+  border-radius: 8px;
+  padding: 6px 0;
+  font-size: 13px;
+  color: #fff;
+}
+
+.month-card.complete {
+  background-color: #198754;
+}
+
+.month-card.upcoming {
+  background-color: #6c757d;
+}
+
+.month-card .status {
+  display: block;
+  font-size: 11px;
+  color: #fff;
+}
+.small, small {
+    font-size: .875em;
+    color: #ffffff;
+}
+
+.action-card {
+  transition: 0.2s;
+}
+.action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}

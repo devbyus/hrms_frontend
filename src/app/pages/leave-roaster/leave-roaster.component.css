@@ -1,0 +1,227 @@
+:host {
+  display: block;
+  --bg: #f6f8fa;
+}
+
+.leave-roaster {
+  background: var(--bg);
+  padding: 1rem;
+}
+
+/* top bar */
+.top-bar {
+  background: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(8,21,66,0.04);
+}
+
+/* grid container */
+.roster-grid {
+  margin-top: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+/* table layout */
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #fff;
+  border-bottom: 1px solid #e9edf3;
+  padding: 0.6rem;
+}
+
+.employee-col {
+  width: 260px;
+  min-width: 260px;
+  text-align: left;
+  padding: 0.75rem;
+}
+
+.day-col {
+  min-width: 120px;
+  width: 120px;
+}
+
+/* avatar */
+.avatar {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg,#6fcf97,#64b5f6);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 50%;
+}
+
+/* shift box styles (colors approximate screenshot) */
+.shift-box {
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+  box-shadow: none;
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* color palette for shift types */
+.shift-general {
+  background: #d9eefc; /* light blue */
+  color: #124d7a;
+  border-color: #cfe8fb;
+}
+.shift-morning {
+  background: #ffeaea; /* light pink */
+  color: #8a3131;
+  border-color: #ffd7d7;
+}
+.shift-afternoon {
+  background: #eef8ff; /* very soft blue */
+  color: #1e6fb3;
+  border-color: #dceffb;
+}
+.shift-night {
+  background: #fff3e0; /* light orange */
+  color: #7a4b1a;
+  border-color: #ffe9cc;
+}
+.shift-early {
+  background: #f3e8ff;
+  color: #5b2ca6;
+  border-color: #e7dfff;
+}
+.shift-fabrik {
+  background: #e6f7ec; /* light green */
+  color: #1e7a3a;
+  border-color: #d6f0dc;
+}
+.shift-evening {
+  background: #e6f2ff;
+  color: #0b5fa5;
+  border-color: #d6eefe;
+}
+.shift-leave {
+  background: #fff0f6; /* very pale rose */
+  color: #a02b5e;
+  border-color: #ffdbe9;
+}
+.shift-default {
+  background: #f5f7fa;
+  color: #5b6b7a;
+  border-color: #e9edf3;
+}
+
+/* empty cell text (WO) */
+.empty-cell {
+  color: rgba(11, 22, 39, 0.25);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* sticky header styles */
+.table thead th .day-name {
+  margin-top: 4px;
+  font-size: 0.8rem;
+}
+
+.add-shift-btn {
+  border: 1px solid #dee2e6;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.add-shift-btn:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.1);
+}
+.shift-modal {
+  border-radius: 12px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-body {
+  padding: 1.5rem 2rem;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.days-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.day-btn {
+  background: #f3f4f6;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #333;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.day-btn:hover {
+  background: #e2e6ea;
+}
+
+.day-btn.active {
+  background: #000;
+  color: #fff;
+}
+
+.btn-dark {
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+hr {
+  border-color: #e5e5e5;
+}
+.shift-box {
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: grab;
+  transition: transform 0.15s;
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.cdk-drop-list-dragging .shift-box:not(.cdk-drag-placeholder) {
+  opacity: 0.5;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+/* responsive: smaller screens */
+@media (max-width: 991.98px) {
+  .employee-col { min-width: 200px; width: 200px; }
+  .day-col { min-width: 100px; width: 100px; }
+  .top-bar { flex-direction: column; gap: .5rem; }
+}
+
+/* small screens hide select filters to avoid overflow (you can toggle via a filter button later) */
+@media (max-width: 767.98px) {
+  .top-bar select { display: none; }
+  .day-col { min-width: 90px; width: 90px; }
+  .employee-col { min-width: 160px; width: 160px; }
+}

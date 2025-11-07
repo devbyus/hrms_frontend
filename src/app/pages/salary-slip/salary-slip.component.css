@@ -1,0 +1,8 @@
+:root{
+    --clr-border-1: #EAEAEA;
+}
+.payslip-line {
+    border-top: 1px solid #EAEAEA;
+    padding-top: 25px;
+    margin-top: 25px;
+}

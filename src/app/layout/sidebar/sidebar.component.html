@@ -1,0 +1,62 @@
+<div class="sidebar" [class.SidebarClose]="isClosed">
+            <ul class="nav-links">
+
+  <!-- Dashboard -->
+  <li class="menu-title">Dashboard</li>
+  <li class="toggle-link" (click)="toggleSubmenu($event, submenuDashboard)">
+  <div class="iocn-link">
+    <a href="javascript:void(0)">
+      <i class="bi bi-speedometer2"></i>
+      <span class="link_name">Dashboard</span>
+    </a>
+    <i class="bi bi-chevron-right arrow"></i>
+  </div>
+
+  <ul class="sub-menu" #submenuDashboard>
+    <li><a routerLink="/dashboard">Admin Dashboard</a></li>
+    <li><a routerLink="/employee-dashboard">Employee Dashboard</a></li>
+  </ul>
+</li>
+
+  <!-- HRMS -->
+  <li class="menu-title">HRMS</li>
+  <li class="toggle-link" (click)="toggleSubmenu($event, submenuHrms)">
+    <div class="iocn-link">
+      <a href="javascript:void(0)">
+        <i class="bi bi-building-fill-gear"></i>
+        <span class="link_name">HRMS</span>
+      </a>
+      <i class="bi bi-chevron-right arrow"></i>
+    </div>
+    <ul class="sub-menu" #submenuHrms>
+      <li><a routerLink="/employee-list">Employee Management</a></li>
+      <li><a routerLink="/admin-attendance">Admin Attendance</a></li>
+      <li><a routerLink="/employee-attendance">Employee Attendance</a></li>
+      <li><a routerLink="/daily-punch">Daily Punch</a></li>
+      <li><a routerLink="/admin-leave">Admin Leaves</a></li>
+      <li><a routerLink="/leave-request">Employee Leaves</a></li>
+      <li><a routerLink="/leave-roaster">Schedule / Roaster</a></li>
+      <li><a routerLink="/admin-management">Admin Management</a></li>
+    </ul>
+  </li>
+
+  <!-- Payroll -->
+  <li class="menu-title">Payroll</li>
+  <li class="toggle-link" (click)="toggleSubmenu($event, submenuPayroll)">
+    <div class="iocn-link">
+      <a href="javascript:void(0)">
+        <i class="bi bi-cash-stack"></i>
+        <span class="link_name">Payroll</span>
+      </a>
+      <i class="bi bi-chevron-right arrow"></i>
+    </div>
+    <ul class="sub-menu" #submenuPayroll>
+      <li><a routerLink="/payroll-list">Pay List</a></li>
+      <li><a routerLink="/salary-slip">Pay Slip</a></li>
+      <li><a routerLink="/payroll-process">Payroll Process</a></li>
+    </ul>
+  </li>
+
+</ul>
+
+         </div>

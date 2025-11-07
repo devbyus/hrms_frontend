@@ -1,0 +1,46 @@
+<div class="login-body">
+  <div class="login-container">
+    <div class="login-form">
+      <div class="text-center mb-4">
+        <h2 class="h3 fw-bold text-dark">Welcome Back</h2>
+        <p class="text-muted fw-bold">Access to our dashboard</p>
+      </div>
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email</label>
+          <input type="text" class="form-control" id="email" placeholder="admin@sacheerome.com" required>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label for="password" class="form-label">Password</label>
+          <input [type]="showPassword ? 'text' : 'password'" id="password" class="form-control"
+            placeholder="Enter password" />
+
+          <i id="passwordIcon" class="bi" [class.bi-eye-slash]="showPassword" [class.bi-eye]="!showPassword"
+            (click)="togglePassword()" style="position:absolute; right:10px; top:45px; cursor:pointer;">
+          </i>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="remember">
+            <label class="form-check-label text-muted small" for="remember">
+              Remember me
+            </label>
+          </div>
+          <a href="#" class="text-decoration-none small" style="color: var(--primary-color);">
+            Forgot password?
+          </a>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mb-3" id="loginBtn" (click)="onLogin()">
+          <span class="login-text">Sign In</span>
+          <span class="loading-spinner">
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+            Signing in...
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

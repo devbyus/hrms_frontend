@@ -1,0 +1,187 @@
+<div class="page-wrapper">
+               <div class="content container-fluid">
+
+                  <!-- Page Header -->
+                  <div class="page-header mb-4">
+                     <div class="row align-items-center">
+                     <div class="col">
+                        <h4 class="page-title mb-0">Attendance</h4>
+                        <nav aria-label="breadcrumb">
+                           <ol class="breadcrumb">
+                              <li class="breadcrumb-item text-muted">
+                                 <a href="dashboard.html">Dashboard</a>
+                              </li>
+                              <li class="breadcrumb-item active" aria-current="page">Attendance</li>
+                           </ol>
+                        </nav>
+                     </div>
+                     </div>
+                  </div>
+                  <!-- /Page Header -->
+
+                  <div class="row g-3 d-flex align-items-stretch">
+
+                     <!-- Punch Status -->
+                     <div class="col-md-6 d-flex">
+                        <div class="card punch-status w-100">
+                           <div class="card-body">
+                              <h5 class="card-title">Timesheet <small class="text-muted" id="today-date"></small></h5>
+                              
+                              <div class="punch-det border my-3 rounded-2 p-2">
+                                 <h6 class="mb-0">Punch In at</h6>
+                                 <input type="datetime-local" id="punch-in" class="form-control" />
+                              </div>
+
+                              <div class="punch-hours my-3">
+                                 <span id="worked-hours">0 hrs</span>
+                              </div>
+
+                              <div class="text-center">
+                                   <div class="text-center">
+                                       <button type="button" class="btn btn-orange punch-btn my-3" id="punch-in-btn">Punch In</button>
+                                       <button type="button" class="btn btn-orange punch-btn my-3" id="punch-out-btn" disabled>Punch Out</button>
+                                    </div>
+                              </div>
+
+                              <div class="statistics">
+                                 <div class="row">
+                                 <div class="col-md-6 col-6 text-center">
+                                    <div class="stats-box border p-1 rounded-2">
+                                       <p class="mb-0">Break</p>
+                                       <small class="mb-0">1.21 hrs</small>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6 col-6 text-center">
+                                    <div class="stats-box border p-1 rounded-2">
+                                       <p class="mb-0">Overtime</p>
+                                       <small class="mb-0">3 hrs</small>
+                                    </div>
+                                 </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Statistics -->
+                      <div class="col-md-6 d-flex">
+                        <div class="card att-statistics w-100">
+                           <div class="card-body">
+                           <h5 class="card-title">Statistics</h5>
+
+                           <div class="stats-info border mb-2 rounded-2 p-3">
+                              <p>Today <strong>3.45 <small>/ 8 hrs</small></strong></p>
+                              <div class="progress"><div class="progress-bar bg-primary" style="width: 45%"></div></div>
+                           </div>
+
+                           <div class="stats-info border mb-2 rounded-2 p-3">
+                              <p>This Week <strong>28 <small>/ 40 hrs</small></strong></p>
+                              <div class="progress"><div class="progress-bar bg-warning" style="width: 70%"></div></div>
+                           </div>
+
+                           <div class="stats-info border mb-2 rounded-2 p-3">
+                              <p>This Month <strong>90 <small>/ 160 hrs</small></strong></p>
+                              <div class="progress"><div class="progress-bar bg-success" style="width: 56%"></div></div>
+                           </div>
+
+                           <div class="stats-info border mb-2 rounded-2 p-3">
+                              <p>Remaining <strong>70 <small>/ 160 hrs</small></strong></p>
+                              <div class="progress"><div class="progress-bar bg-danger" style="width: 44%"></div></div>
+                           </div>
+
+                           <div class="stats-info border mb-2 rounded-2 p-3">
+                              <p>Overtime <strong>4 hrs</strong></p>
+                              <div class="progress"><div class="progress-bar bg-info" style="width: 25%"></div></div>
+                           </div>
+                           </div>
+                        </div>
+                     </div>
+
+                  </div>
+
+
+                  <!-- Filters -->
+                  <div class="row filter-row mt-4">
+                     <div class="col-sm-3">
+                     <label class="form-label">Date</label>
+                     <input type="date" class="form-control">
+                     </div>
+                     <div class="col-sm-3">
+                     <label class="form-label">Month</label>
+                     <select class="form-select">
+                        <option>-</option>
+                        <option>Jan</option>
+                        <option>Feb</option>
+                        <option>Mar</option>
+                        <option>Apr</option>
+                        <option>May</option>
+                        <option>Jun</option>
+                        <option>Jul</option>
+                        <option>Aug</option>
+                        <option>Sep</option>
+                        <option>Oct</option>
+                        <option>Nov</option>
+                        <option>Dec</option>
+                     </select>
+                     </div>
+                     <div class="col-sm-3">
+                     <label class="form-label">Year</label>
+                     <select class="form-select">
+                        <option>-</option>
+                        <option>2025</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                        <option>2021</option>
+                     </select>
+                     </div>
+                     <div class="col-sm-3 d-flex align-items-end">
+                     <button class="btn btn-success w-100">Search</button>
+                     </div>
+                  </div>
+                  <!-- /Filters -->
+
+                  <!-- Attendance Table -->
+                  <div class="row mt-4">
+                     <div class="col-lg-12">
+                     <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                           <thead class="table-dark">
+                           <tr>
+                              <th>#</th>
+                              <th>Date</th>
+                              <th>Punch In</th>
+                              <th>Punch Out</th>
+                              <th>Production</th>
+                              <th>Break</th>
+                              <th>Overtime</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr>
+                              <td>1</td>
+                              <td>16 Sep 2025</td>
+                              <td>10:00 AM</td>
+                              <td>7:00 PM</td>
+                              <td>9 hrs</td>
+                              <td>1 hr</td>
+                              <td>0</td>
+                           </tr>
+                           <tr>
+                              <td>2</td>
+                              <td>15 Sep 2025</td>
+                              <td>10:15 AM</td>
+                              <td>6:45 PM</td>
+                              <td>8.5 hrs</td>
+                              <td>45 min</td>
+                              <td>1 hr</td>
+                           </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     </div>
+                  </div>
+                  <!-- /Attendance Table -->
+
+               </div>
+            </div>
