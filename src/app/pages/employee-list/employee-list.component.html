@@ -1,752 +1,370 @@
 <div class="page-wrapper">
+   <div class="content container-fluid position-relative">
+      <div class="page-header mb-4">
+         <div class="row align-items-center">
+            <div class="col">
+               <h4 class="page-title mb-0">Employee</h4>
+               <!-- Breadcrumb -->
+               <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item">
+                        <a href="dashboard.html" class="text-muted">Dashboard</a>
+                     </li>
+                     <li class="breadcrumb-item active" aria-current="page">
+                        Employee
+                     </li>
+                  </ol>
+               </nav>
+            </div>
 
-               <div class="content container-fluid position-relative">
-                  <div class="page-header mb-4">
-                     <div class="row align-items-center">
-                        <div class="col">
-                           <h4 class="page-title mb-0">Employee</h4>
-                           <!-- Breadcrumb -->
-                           <nav aria-label="breadcrumb">
-                              <ol class="breadcrumb">
-                                 <li class="breadcrumb-item">
-                                    <a href="dashboard.html" class="text-muted">Dashboard</a>
-                                 </li>
-                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Employee
-                                 </li>
-                              </ol>
-                           </nav>
-                        </div>
+            <div class="col-auto ms-auto d-flex align-items-center gap-2">
+               <!-- Add Employee Button -->
+               <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#add_employee">
+                  + Add Employee
+               </button>
 
-                        <div class="col-auto ms-auto d-flex align-items-center gap-2">
-                           <!-- Add Employee Button -->
-                           <button type="button" class="btn btn-primary rounded-5" data-bs-toggle="modal"
-                              data-bs-target="#add_employee">
-                              <i class="bi bi-plus-lg me-1"></i> Add Employee
-                           </button>
-                        </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="row g-3 filter-row mb-3">
+         <!-- Employee ID -->
+         <div class="col-sm-6 col-md-3">
+            <div class="form-floating">
+               <input type="text" class="form-control" id="employeeId" placeholder="Employee ID">
+               <label for="employeeId">Employee ID</label>
+            </div>
+         </div>
+
+         <!-- Employee Name -->
+         <div class="col-sm-6 col-md-3">
+            <div class="form-floating">
+               <input type="text" class="form-control" id="employeeName" placeholder="Employee Name">
+               <label for="employeeName">Employee Name</label>
+            </div>
+         </div>
+
+         <!-- Designation -->
+         <div class="col-sm-6 col-md-3">
+            <div class="form-floating">
+               <select class="form-select" id="designation" required>
+                  <option selected disabled>Select Designation</option>
+                  <option>Web Developer</option>
+                  <option>Web Designer</option>
+                  <option>Android Developer</option>
+                  <option>iOS Developer</option>
+               </select>
+               <label for="designation">Designation <span class="text-danger">*</span></label>
+            </div>
+         </div>
+
+         <!-- Search Button -->
+         <div class="col-sm-6 col-md-3 d-grid">
+            <button type="button" class="btn btn-success">Search</button>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-md-12">
+            <div class="table-responsive">
+               <table class="table table-bordered text-center">
+                  <thead class="table-light">
+                     <tr>
+                        <th>#</th>
+                        <th>Emp ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr *ngFor="let emp of employeeList; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ emp.employeeId }}</td>
+                        <td>{{ emp.firstName }} {{ emp.lastName }}</td>
+                        <td>{{ emp.email }}</td>
+                        <td>{{ emp.department }}</td>
+                        <td>{{ emp.designation }}</td>
+                     </tr>
+                     <tr *ngIf="employeeList.length === 0">
+                        <td colspan="6">No employees added yet.</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+
+         </div>
+      </div>
+   </div>
+
+
+
+   <!-- Add Employee Modal -->
+   <div class="modal fade" id="add_employee" tabindex="-1" aria-labelledby="addEmployeeLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="addEmployeeLabel">Add Employee</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-4">
+               <form (ngSubmit)="addEmployee()">
+                  <div class="row g-3">
+                     <!-- First Name -->
+                     <div class="col-sm-6">
+                        <label class="form-label">First Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="newEmployee.firstName" name="firstName"
+                           required>
                      </div>
-                  </div>
 
-                  <div class="row g-3 filter-row mb-3">
+                     <!-- Last Name -->
+                     <div class="col-sm-6">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="newEmployee.lastName" name="lastName">
+                     </div>
+
+                     <!-- Username -->
+                     <div class="col-sm-6">
+                        <label class="form-label">Username <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="newEmployee.username" name="username"
+                           required>
+                     </div>
+
+                     <!-- Email -->
+                     <div class="col-sm-6">
+                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" [(ngModel)]="newEmployee.email" name="email" required>
+                     </div>
+
+                     <!-- Password -->
+                     <div class="col-sm-6">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" [(ngModel)]="newEmployee.password" name="password">
+                     </div>
+
+                     <!-- Confirm Password -->
+                     <div class="col-sm-6">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" [(ngModel)]="newEmployee.confirmPassword"
+                           name="confirmPassword">
+                     </div>
+
                      <!-- Employee ID -->
-                     <div class="col-sm-6 col-md-3">
-                        <div class="form-floating">
-                           <input type="text" class="form-control" id="employeeId" placeholder="Employee ID">
-                           <label for="employeeId">Employee ID</label>
-                        </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Employee ID <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="newEmployee.employeeId" name="employeeId"
+                           required>
                      </div>
 
-                     <!-- Employee Name -->
-                     <div class="col-sm-6 col-md-3">
-                        <div class="form-floating">
-                           <input type="text" class="form-control" id="employeeName" placeholder="Employee Name">
-                           <label for="employeeName">Employee Name</label>
-                        </div>
+                     <!-- Joining Date -->
+                     <div class="col-sm-6">
+                        <label class="form-label">Joining Date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" [(ngModel)]="newEmployee.joiningDate" name="joiningDate"
+                           required>
+                     </div>
+
+                     <!-- Phone -->
+                     <div class="col-sm-6">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" [(ngModel)]="newEmployee.phone" name="phone">
+                     </div>
+
+                     <!-- Company -->
+                     <div class="col-sm-6">
+                        <label class="form-label">Company</label>
+                        <select class="form-select" [(ngModel)]="newEmployee.company" name="company">
+                           <option value="">Select Company</option>
+                           <option value="Global Technologies">Global Technologies</option>
+                           <option value="Delta Infotech">Delta Infotech</option>
+                        </select>
+                     </div>
+
+                     <!-- Department -->
+                     <div class="col-md-6">
+                        <label class="form-label">Department <span class="text-danger">*</span></label>
+                        <select class="form-select" [(ngModel)]="newEmployee.department" name="department" required>
+                           <option value="">Select Department</option>
+                           <option>Web Development</option>
+                           <option>IT Management</option>
+                           <option>Marketing</option>
+                        </select>
                      </div>
 
                      <!-- Designation -->
-                     <div class="col-sm-6 col-md-3">
-                        <div class="form-floating">
-                           <select class="form-select" id="designation" required>
-                              <option selected disabled>Select Designation</option>
-                              <option>Web Developer</option>
-                              <option>Web Designer</option>
-                              <option>Android Developer</option>
-                              <option>iOS Developer</option>
-                           </select>
-                           <label for="designation">Designation <span class="text-danger">*</span></label>
-                        </div>
-                     </div>
-
-                     <!-- Search Button -->
-                     <div class="col-sm-6 col-md-3 d-grid">
-                        <button type="button" class="btn btn-success">Search</button>
+                     <div class="col-md-6">
+                        <label class="form-label">Designation <span class="text-danger">*</span></label>
+                        <select class="form-select" [(ngModel)]="newEmployee.designation" name="designation" required>
+                           <option value="">Select Designation</option>
+                           <option>Web Designer</option>
+                           <option>Web Developer</option>
+                           <option>Android Developer</option>
+                        </select>
                      </div>
                   </div>
 
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="table-responsive">
-                           <table id="employeeTable" class="border table table-striped custom-table datatable">
-                              <thead class="table-dark">
-                                 <tr>
-                                    <th>Name</th>
-                                    <th>Employee ID</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th class="text-nowrap">Join Date</th>
-                                    <th>Role</th>
-                                    <th class="text-end no-sort">Action</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <tr>
-                                    <td>
-                                       <h2 class="table-avatar">
-                                          <a href="profile.html" class="avatar"><img alt=""
-                                                src="assets/img/profiles/avatar-02.jpg"></a>
-                                          <a href="profile.html">John Doe <span>Web Designer</span></a>
-                                       </h2>
-                                    </td>
-                                    <td>FT-0001</td>
-                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                          data-cfemail="046e6b6c6a606b6144617c65697468612a676b69">[email&#160;protected]</a>
-                                    </td>
-                                    <td>9876543210</td>
-                                    <td>1 Jan 2013</td>
-                                    <td>
-
-                                       <div class="dropdown">
-                                          <a class="btn btn-sm rounded-pill dropdown-toggle border" href="#"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                             Web Developer
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li><a class="dropdown-item" href="#">Software Engineer</a></li>
-                                             <li><a class="dropdown-item" href="#">Software Tester</a></li>
-                                             <li><a class="dropdown-item" href="#">Frontend Developer</a></li>
-                                             <li><a class="dropdown-item" href="#">UI/UX Developer</a></li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                    <td class="text-end">
-                                       <div class="dropdown dropdown-action">
-                                          <a href="#" class="action-icon " data-bs-toggle="dropdown"
-                                             aria-expanded="false">
-                                             <i class="bi bi-three-dots-vertical"></i>
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#edit_employee">
-                                                   <i class="bi bi-pencil me-2"></i> Edit
-                                                </a>
-                                             </li>
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#delete_employee">
-                                                   <i class="bi bi-trash me-2"></i> Delete
-                                                </a>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td>
-                                       <h2 class="table-avatar">
-                                          <a href="profile.html" class="avatar"><img alt=""
-                                                src="assets/img/profiles/avatar-09.jpg"></a>
-                                          <a href="profile.html">Richard Miles <span>Web Developer</span></a>
-                                       </h2>
-                                    </td>
-                                    <td>FT-0002</td>
-                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                          data-cfemail="3c4e555f545d4e58515550594f7c59445d514c5059125f5351">[email&#160;protected]</a>
-                                    </td>
-                                    <td>9876543210</td>
-                                    <td>18 Mar 2014</td>
-                                    <td>
-                                       <div class="dropdown">
-                                          <a class="btn btn-sm rounded-pill dropdown-toggle border" href="#"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                             Web Developer
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li><a class="dropdown-item" href="#">Software Engineer</a></li>
-                                             <li><a class="dropdown-item" href="#">Software Tester</a></li>
-                                             <li><a class="dropdown-item" href="#">Frontend Developer</a></li>
-                                             <li><a class="dropdown-item" href="#">UI/UX Developer</a></li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                    <td class="text-end">
-                                       <div class="dropdown dropdown-action">
-                                          <a href="#" class="action-icon " data-bs-toggle="dropdown"
-                                             aria-expanded="false">
-                                             <i class="bi bi-three-dots-vertical"></i>
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#edit_employee">
-                                                   <i class="bi bi-pencil me-2"></i> Edit
-                                                </a>
-                                             </li>
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#delete_employee">
-                                                   <i class="bi bi-trash me-2"></i> Delete
-                                                </a>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td>
-                                       <h2 class="table-avatar">
-                                          <a href="profile.html" class="avatar"><img alt=""
-                                                src="assets/img/profiles/avatar-10.jpg"></a>
-                                          <a href="profile.html">John Smith <span>Android Developer</span></a>
-                                       </h2>
-                                    </td>
-                                    <td>FT-0003</td>
-                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                          data-cfemail="c7ada8afa9b4aaaeb3af87a2bfa6aab7aba2e9a4a8aa">[email&#160;protected]</a>
-                                    </td>
-                                    <td>9876543210</td>
-                                    <td>1 Apr 2014</td>
-                                    <td>
-                                       <div class="dropdown">
-                                          <a class="btn btn-sm rounded-pill dropdown-toggle border" href="#"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                             Web Developer
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li><a class="dropdown-item" href="#">Software Engineer</a></li>
-                                             <li><a class="dropdown-item" href="#">Software Tester</a></li>
-                                             <li><a class="dropdown-item" href="#">Frontend Developer</a></li>
-                                             <li><a class="dropdown-item" href="#">UI/UX Developer</a></li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                    <td class="text-end">
-                                       <div class="dropdown dropdown-action">
-                                          <a href="#" class="action-icon " data-bs-toggle="dropdown"
-                                             aria-expanded="false">
-                                             <i class="bi bi-three-dots-vertical"></i>
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#edit_employee">
-                                                   <i class="bi bi-pencil me-2"></i> Edit
-                                                </a>
-                                             </li>
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#delete_employee">
-                                                   <i class="bi bi-trash me-2"></i> Delete
-                                                </a>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td>
-                                       <h2 class="table-avatar">
-                                          <a href="profile.html" class="avatar"><img alt=""
-                                                src="assets/img/profiles/avatar-05.jpg"></a>
-                                          <a href="profile.html">Mike Litorus <span>IOS Developer</span></a>
-                                       </h2>
-                                    </td>
-                                    <td>FT-0004</td>
-                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                          data-cfemail="d5b8bcbeb0b9bca1baa7a0a695b0adb4b8a5b9b0fbb6bab8">[email&#160;protected]</a>
-                                    </td>
-                                    <td>9876543210</td>
-                                    <td>1 Apr 2014</td>
-                                    <td>
-                                       <div class="dropdown">
-                                          <a class="btn btn-sm rounded-pill dropdown-toggle border" href="#"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                             Web Developer
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li><a class="dropdown-item" href="#">Software Engineer</a></li>
-                                             <li><a class="dropdown-item" href="#">Software Tester</a></li>
-                                             <li><a class="dropdown-item" href="#">Frontend Developer</a></li>
-                                             <li><a class="dropdown-item" href="#">UI/UX Developer</a></li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                    <td class="text-end">
-                                       <div class="dropdown dropdown-action">
-                                          <a href="#" class="action-icon " data-bs-toggle="dropdown"
-                                             aria-expanded="false">
-                                             <i class="bi bi-three-dots-vertical"></i>
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#edit_employee">
-                                                   <i class="bi bi-pencil me-2"></i> Edit
-                                                </a>
-                                             </li>
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#delete_employee">
-                                                   <i class="bi bi-trash me-2"></i> Delete
-                                                </a>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td>
-                                       <h2 class="table-avatar">
-                                          <a href="profile.html" class="avatar"><img alt=""
-                                                src="assets/img/profiles/avatar-11.jpg"></a>
-                                          <a href="profile.html">Wilmer Deluna <span>Team Leader</span></a>
-                                       </h2>
-                                    </td>
-                                    <td>FT-0005</td>
-                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                          data-cfemail="47302e2b2a223523222b32292607223f262a372b226924282a">[email&#160;protected]</a>
-                                    </td>
-                                    <td>9876543210</td>
-                                    <td>22 May 2014</td>
-                                    <td>
-                                       <div class="dropdown">
-                                          <a class="btn btn-sm rounded-pill dropdown-toggle border" href="#"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                             Web Developer
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li><a class="dropdown-item" href="#">Software Engineer</a></li>
-                                             <li><a class="dropdown-item" href="#">Software Tester</a></li>
-                                             <li><a class="dropdown-item" href="#">Frontend Developer</a></li>
-                                             <li><a class="dropdown-item" href="#">UI/UX Developer</a></li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                    <td class="text-end">
-                                       <div class="dropdown dropdown-action">
-                                          <a href="#" class="action-icon " data-bs-toggle="dropdown"
-                                             aria-expanded="false">
-                                             <i class="bi bi-three-dots-vertical"></i>
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#edit_employee">
-                                                   <i class="bi bi-pencil me-2"></i> Edit
-                                                </a>
-                                             </li>
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#delete_employee">
-                                                   <i class="bi bi-trash me-2"></i> Delete
-                                                </a>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td>
-                                       <h2 class="table-avatar">
-                                          <a href="profile.html" class="avatar"><img alt=""
-                                                src="assets/img/profiles/avatar-12.jpg"></a>
-                                          <a href="profile.html">Jeffrey Warden <span>Web Developer</span></a>
-                                       </h2>
-                                    </td>
-                                    <td>FT-0006</td>
-                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                          data-cfemail="147e71727266716d63756670717a54716c75796478713a777b79">[email&#160;protected]</a>
-                                    </td>
-                                    <td>9876543210</td>
-                                    <td>16 Jun 2013</td>
-                                    <td>
-                                       <div class="dropdown">
-                                          <a class="btn btn-sm rounded-pill dropdown-toggle border" href="#"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                             Web Developer
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li><a class="dropdown-item" href="#">Software Engineer</a></li>
-                                             <li><a class="dropdown-item" href="#">Software Tester</a></li>
-                                             <li><a class="dropdown-item" href="#">Frontend Developer</a></li>
-                                             <li><a class="dropdown-item" href="#">UI/UX Developer</a></li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                    <td class="text-end">
-                                       <div class="dropdown dropdown-action">
-                                          <a href="#" class="action-icon " data-bs-toggle="dropdown"
-                                             aria-expanded="false">
-                                             <i class="bi bi-three-dots-vertical"></i>
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#edit_employee">
-                                                   <i class="bi bi-pencil me-2"></i> Edit
-                                                </a>
-                                             </li>
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#delete_employee">
-                                                   <i class="bi bi-trash me-2"></i> Delete
-                                                </a>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td>
-                                       <h2 class="table-avatar">
-                                          <a href="profile.html" class="avatar"><img alt=""
-                                                src="assets/img/profiles/avatar-13.jpg"></a>
-                                          <a href="profile.html">Bernardo Galaviz <span>Web Developer</span></a>
-                                       </h2>
-                                    </td>
-                                    <td>FT-0007</td>
-                                    <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                          data-cfemail="6d0f081f030c1f09020a0c010c1b04172d08150c001d0108430e0200">[email&#160;protected]</a>
-                                    </td>
-                                    <td>9876543210</td>
-                                    <td>1 Jan 2013</td>
-                                    <td>
-                                       <div class="dropdown">
-                                          <a class="btn btn-sm rounded-pill dropdown-toggle border" href="#"
-                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                             Web Developer
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li><a class="dropdown-item" href="#">Software Engineer</a></li>
-                                             <li><a class="dropdown-item" href="#">Software Tester</a></li>
-                                             <li><a class="dropdown-item" href="#">Frontend Developer</a></li>
-                                             <li><a class="dropdown-item" href="#">UI/UX Developer</a></li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                    <td class="text-end">
-                                       <div class="dropdown dropdown-action">
-                                          <a href="#" class="action-icon " data-bs-toggle="dropdown"
-                                             aria-expanded="false">
-                                             <i class="bi bi-three-dots-vertical"></i>
-                                          </a>
-                                          <ul class="dropdown-menu">
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#edit_employee">
-                                                   <i class="bi bi-pencil me-2"></i> Edit
-                                                </a>
-                                             </li>
-                                             <li>
-                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#delete_employee">
-                                                   <i class="bi bi-trash me-2"></i> Delete
-                                                </a>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
+                  <!-- Submit Button -->
+                  <div class="mt-4 text-end">
+                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
-               </div>
-
-               <!-- Add Employee Modal -->
-               <div class="modal fade" id="add_employee" tabindex="-1" aria-labelledby="addEmployeeLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg">
-                     <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                           <h5 class="modal-title" id="addEmployeeLabel">Add Employee</h5>
-                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <!-- Modal Body -->
-                        <div class="modal-body p-4">
-                           <form>
-                              <div class="row g-3">
-
-                                 <!-- First Name -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">First Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                 </div>
-
-                                 <!-- Last Name -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control">
-                                 </div>
-
-                                 <!-- Username -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Username <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                 </div>
-
-                                 <!-- Email -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control">
-                                 </div>
-
-                                 <!-- Password -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control">
-                                 </div>
-
-                                 <!-- Confirm Password -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control">
-                                 </div>
-
-                                 <!-- Employee ID -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Employee ID <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                 </div>
-
-                                 <!-- Joining Date -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Joining Date <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control">
-                                 </div>
-
-                                 <!-- Phone -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Phone</label>
-                                    <input type="text" class="form-control">
-                                 </div>
-
-                                 <!-- Company -->
-                                 <div class="col-sm-6">
-                                    <label class="form-label">Company</label>
-                                    <select class="form-select">
-                                       <option value="">Global Technologies</option>
-                                       <option value="1">Delta Infotech</option>
-                                    </select>
-                                 </div>
-
-                                 <!-- Department -->
-                                 <div class="col-md-6">
-                                    <label class="form-label">Department <span class="text-danger">*</span></label>
-                                    <select class="form-select">
-                                       <option>Select Department</option>
-                                       <option>Web Development</option>
-                                       <option>IT Management</option>
-                                       <option>Marketing</option>
-                                    </select>
-                                 </div>
-
-                                 <!-- Designation -->
-                                 <div class="col-md-6">
-                                    <label for="designation" class="form-label">Designation <span
-                                          class="text-danger">*</span></label>
-                                    <select id="designation" class="form-select" required>
-                                       <option selected disabled>Select Designation</option>
-                                       <option>Web Designer</option>
-                                       <option>Web Developer</option>
-                                       <option>Android Developer</option>
-                                    </select>
-                                 </div>
-                              </div>
-
-                              <!-- Permissions Table -->
-                              <div class="table-responsive mt-4">
-                                 <table class="table table-bordered align-middle">
-                                    <thead class="table-light">
-                                       <tr>
-                                          <th>Module Permission</th>
-                                          <th class="text-center">Read</th>
-                                          <th class="text-center">Write</th>
-                                          <th class="text-center">Create</th>
-                                          <th class="text-center">Delete</th>
-                                          <th class="text-center">Import</th>
-                                          <th class="text-center">Export</th>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr>
-                                          <td>Holidays</td>
-                                          <td class="text-center"><input type="checkbox" checked></td>
-                                          <td class="text-center"><input type="checkbox"></td>
-                                          <td class="text-center"><input type="checkbox"></td>
-                                          <td class="text-center"><input type="checkbox"></td>
-                                          <td class="text-center"><input type="checkbox"></td>
-                                          <td class="text-center"><input type="checkbox"></td>
-                                       </tr>
-                                       <tr>
-                                          <td>Leaves</td>
-                                          <td class="text-center"><input type="checkbox" checked></td>
-                                          <td class="text-center"><input type="checkbox" checked></td>
-                                          <td class="text-center"><input type="checkbox" checked></td>
-                                          <td class="text-center"><input type="checkbox"></td>
-                                          <td class="text-center"><input type="checkbox"></td>
-                                          <td class="text-center"><input type="checkbox"></td>
-                                       </tr>
-                                       <!-- Add other rows as needed -->
-                                    </tbody>
-                                 </table>
-                              </div>
-
-                              <!-- Submit Button -->
-                              <div class="mt-3 text-end">
-                                 <button type="submit" class="btn btn-primary">Submit</button>
-                              </div>
-                           </form>
-                        </div>
-
-                     </div>
-                  </div>
-               </div>
-
-              <div class="modal fade" id="edit_employee" tabindex="-1" aria-labelledby="editEmployeeLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg">
-                     <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="editEmployeeLabel">Edit Employee</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-                        <!-- Modal Body -->
-                        <div class="modal-body">
-                        <form>
-                           <div class="row g-3">
-                              <div class="col-sm-6">
-                              <label class="form-label">First Name <span class="text-danger">*</span></label>
-                              <input type="text" class="form-control" value="John">
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Last Name</label>
-                              <input type="text" class="form-control" value="Doe">
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Username <span class="text-danger">*</span></label>
-                              <input type="text" class="form-control" value="johndoe">
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Email <span class="text-danger">*</span></label>
-                              <input type="email" class="form-control" value="johndoe@example.com">
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Password</label>
-                              <input type="password" class="form-control" value="johndoe">
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Confirm Password</label>
-                              <input type="password" class="form-control" value="johndoe">
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Employee ID <span class="text-danger">*</span></label>
-                              <input type="text" class="form-control" value="FT-0001" readonly>
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Joining Date <span class="text-danger">*</span></label>
-                              <input type="date" class="form-control">
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Phone</label>
-                              <input type="text" class="form-control" value="9876543210">
-                              </div>
-                              <div class="col-sm-6">
-                              <label class="form-label">Company</label>
-                              <select class="form-select">
-                                 <option>Global Technologies</option>
-                                 <option>Delta Infotech</option>
-                                 <option selected>International Software Inc</option>
-                              </select>
-                              </div>
-                              <div class="col-md-6">
-                              <label class="form-label">Department <span class="text-danger">*</span></label>
-                              <select class="form-select">
-                                 <option>Select Department</option>
-                                 <option>Web Development</option>
-                                 <option>IT Management</option>
-                                 <option>Marketing</option>
-                              </select>
-                              </div>
-                              <div class="col-md-6">
-                              <label class="form-label">Designation <span class="text-danger">*</span></label>
-                              <select class="form-select">
-                                 <option>Select Designation</option>
-                                 <option>Web Designer</option>
-                                 <option>Web Developer</option>
-                                 <option>Android Developer</option>
-                              </select>
-                              </div>
-                           </div>
-
-                           <!-- Permissions Table -->
-                           <div class="table-responsive mt-4">
-                              <table class="table table-striped">
-                              <thead>
-                                 <tr>
-                                    <th>Module Permission</th>
-                                    <th class="text-center">Read</th>
-                                    <th class="text-center">Write</th>
-                                    <th class="text-center">Create</th>
-                                    <th class="text-center">Delete</th>
-                                    <th class="text-center">Import</th>
-                                    <th class="text-center">Export</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <tr>
-                                    <td>Holidays</td>
-                                    <td class="text-center"><input type="checkbox" checked></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                 </tr>
-                                 <tr>
-                                    <td>Leaves</td>
-                                    <td class="text-center"><input type="checkbox" checked></td>
-                                    <td class="text-center"><input type="checkbox" checked></td>
-                                    <td class="text-center"><input type="checkbox" checked></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                 </tr>
-                                 <!-- repeat rows as in your code -->
-                              </tbody>
-                              </table>
-                           </div>
-
-                           <!-- Submit -->
-                           <div class="submit-section text-end">
-                              <button type="submit" class="btn btn-primary">Save</button>
-                           </div>
-                        </form>
-                        </div>
-
-                     </div>
-                  </div>
-               </div>
-
-               <div class="modal fade custom-modal" id="delete_employee" tabindex="-1" aria-labelledby="deleteEmployeeLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                     <div class="modal-content">
-                        <div class="modal-body">
-                        <div class="form-header text-center">
-                           <h3 id="deleteEmployeeLabel">Delete Employee</h3>
-                           <p>Are you sure you want to delete?</p>
-                        </div>
-                        <div class="modal-btn delete-action mt-4">
-                           <div class="row">
-                              <div class="col-6">
-                              <button type="button" class="btn btn-danger w-100">Delete</button>
-                              </div>
-                              <div class="col-6">
-                              <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancel</button>
-                              </div>
-                           </div>
-                        </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
+               </form>
             </div>
+         </div>
+      </div>
+   </div>
+
+
+
+   <div class="modal fade" id="edit_employee" tabindex="-1" aria-labelledby="editEmployeeLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+         <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+               <h5 class="modal-title" id="editEmployeeLabel">Edit Employee</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+               <form>
+                  <div class="row g-3">
+                     <div class="col-sm-6">
+                        <label class="form-label">First Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="John">
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" value="Doe">
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Username <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="johndoe">
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" value="johndoe@example.com">
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" value="johndoe">
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" value="johndoe">
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Employee ID <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="FT-0001" readonly>
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Joining Date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control">
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" value="9876543210">
+                     </div>
+                     <div class="col-sm-6">
+                        <label class="form-label">Company</label>
+                        <select class="form-select">
+                           <option>Global Technologies</option>
+                           <option>Delta Infotech</option>
+                           <option selected>International Software Inc</option>
+                        </select>
+                     </div>
+                     <div class="col-md-6">
+                        <label class="form-label">Department <span class="text-danger">*</span></label>
+                        <select class="form-select">
+                           <option>Select Department</option>
+                           <option>Web Development</option>
+                           <option>IT Management</option>
+                           <option>Marketing</option>
+                        </select>
+                     </div>
+                     <div class="col-md-6">
+                        <label class="form-label">Designation <span class="text-danger">*</span></label>
+                        <select class="form-select">
+                           <option>Select Designation</option>
+                           <option>Web Designer</option>
+                           <option>Web Developer</option>
+                           <option>Android Developer</option>
+                        </select>
+                     </div>
+                  </div>
+
+                  <!-- Permissions Table -->
+                  <div class="table-responsive mt-4">
+                     <table class="table table-striped">
+                        <thead>
+                           <tr>
+                              <th>Module Permission</th>
+                              <th class="text-center">Read</th>
+                              <th class="text-center">Write</th>
+                              <th class="text-center">Create</th>
+                              <th class="text-center">Delete</th>
+                              <th class="text-center">Import</th>
+                              <th class="text-center">Export</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>Holidays</td>
+                              <td class="text-center"><input type="checkbox" checked></td>
+                              <td class="text-center"><input type="checkbox"></td>
+                              <td class="text-center"><input type="checkbox"></td>
+                              <td class="text-center"><input type="checkbox"></td>
+                              <td class="text-center"><input type="checkbox"></td>
+                              <td class="text-center"><input type="checkbox"></td>
+                           </tr>
+                           <tr>
+                              <td>Leaves</td>
+                              <td class="text-center"><input type="checkbox" checked></td>
+                              <td class="text-center"><input type="checkbox" checked></td>
+                              <td class="text-center"><input type="checkbox" checked></td>
+                              <td class="text-center"><input type="checkbox"></td>
+                              <td class="text-center"><input type="checkbox"></td>
+                              <td class="text-center"><input type="checkbox"></td>
+                           </tr>
+                           <!-- repeat rows as in your code -->
+                        </tbody>
+                     </table>
+                  </div>
+
+                  <!-- Submit -->
+                  <div class="submit-section text-end">
+                     <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+               </form>
+            </div>
+
+         </div>
+      </div>
+   </div>
+
+   <div class="modal fade custom-modal" id="delete_employee" tabindex="-1" aria-labelledby="deleteEmployeeLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-body">
+               <div class="form-header text-center">
+                  <h3 id="deleteEmployeeLabel">Delete Employee</h3>
+                  <p>Are you sure you want to delete?</p>
+               </div>
+               <div class="modal-btn delete-action mt-4">
+                  <div class="row">
+                     <div class="col-6">
+                        <button type="button" class="btn btn-danger w-100">Delete</button>
+                     </div>
+                     <div class="col-6">
+                        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Cancel</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</div>
